@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=ItemFaixaEtariaEscolar
+comment1.params=nivel\ serie\ idade
+comment1.target=ItemFaixaEtariaEscolar(java.lang.String,\ java.lang.String,\ java.lang.Integer)
+comment2.params=
+comment2.target=java.lang.String\ getNivel()
+comment3.params=
+comment3.target=java.lang.String\ getSerie()
+comment4.params=
+comment4.target=java.lang.Integer\ getIdade()
+numComments=5

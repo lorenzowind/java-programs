@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=ItemFaixaIdades
+comment1.params=idadeMinima\ idadeMaxima\ tempoUso
+comment1.target=ItemFaixaIdades(java.lang.Integer,\ java.lang.Integer,\ java.lang.Double)
+comment2.params=
+comment2.target=java.lang.Integer\ getIdadeMinima()
+comment3.params=
+comment3.target=java.lang.Integer\ getIdadeMaxima()
+comment4.params=
+comment4.target=java.lang.Double\ getTempoUso()
+numComments=5

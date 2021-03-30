@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ControladorTarefa
+comment1.params=
+comment1.target=ControladorTarefa()
+comment2.params=
+comment2.target=void\ calcularPctgUsoFaixaEtariaEscolar()
+comment3.params=idade\ qtdHorasUso
+comment3.target=void\ calcularPctgUsoUsuario(java.lang.Integer,\ java.lang.Double)
+numComments=4

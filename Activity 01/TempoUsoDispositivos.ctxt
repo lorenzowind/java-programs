@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=TempoUsoDispositivos
+comment1.params=idade
+comment1.target=java.lang.Double\ buscarHorasUsoFaixaIdades(java.lang.Integer)
+comment2.params=idade\ periodo\ qtdHorasUso
+comment2.target=java.lang.Double\ calcularPctgUso(java.lang.Integer,\ java.lang.Character,\ java.lang.Double)
+numComments=3
