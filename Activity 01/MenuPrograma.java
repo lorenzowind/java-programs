@@ -64,7 +64,7 @@ public class MenuPrograma {
                     String[] qtdHorasUsoStr = scanner.next().split(":");
                     scanner.nextLine();
                     
-                    // Variável para armazenar quantidade de horas formatada com tipagem númerica
+                    // Variável para armazenar quantidade de horas formatada com tipagem numérica
                     Double qtdHorasUso = Double.parseDouble(qtdHorasUsoStr[0]) 
                         + Double.parseDouble(qtdHorasUsoStr[1]) / 60;
                     

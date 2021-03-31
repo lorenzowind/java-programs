@@ -2,13 +2,8 @@
  * A classe TempoUsoDispositivos é a camada de modelo do programa, sendo a estrutura que contém os 
  * métodos e atributos referentes a parte lógica do programa, gerenciando o comportamento dos dados.
  */
-public abstract class TempoUsoDispositivos implements RepositorioOperacoes {
-    private final Double mediaHorasSonoDia = 8.0;
-    private final Double mediaHorasAcordadoDia = 24 - this.mediaHorasSonoDia;
-    
-    private final Integer totalDiasSemana = 7;
-    private final Integer totalDiasMes = 30;
-    private final Integer totalDiasAno = 365;
+public abstract class TempoUsoDispositivos implements RepositorioOperacoes, RepositorioConstantes {
+    Mensagem mensagem = new Mensagem();
     
     // Array de objetos para armazenar as faixas de idade e o respectivo tempo médio de uso dos 
     // dispositivos
@@ -49,8 +44,9 @@ public abstract class TempoUsoDispositivos implements RepositorioOperacoes {
     public Double buscarHorasUsoFaixaIdades(Integer idade) {
         // Laço para verificação do intervalo da faixa de idades
         for (int i = 0; i < this.faixaIdades.length; i++) {
-            if (idade >= this.faixaIdades[i].getIdadeMinima() && 
-                idade <= this.faixaIdades[i].getIdadeMaxima()) {
+            if ((idade >= this.faixaIdades[i].getIdadeMinima() && 
+                idade <= this.faixaIdades[i].getIdadeMaxima()) || 
+                faixaIdades.length - 1 == i) {
                 return this.faixaIdades[i].getTempoUso();
             }
         }
@@ -59,48 +55,50 @@ public abstract class TempoUsoDispositivos implements RepositorioOperacoes {
     }
     
     /**
-     * Método para calcular a porcentagem de uso em um período - podendo ser diário, semanal, mensal
-     * e anual - referente a determinada idade e opcionalmente a quantidade de horas de uso por dia
-     * dos dispositivos.
+     * Método para calcular a porcentagem de uso referente a determinada idade e opcionalmente a 
+     * quantidade de horas de utilização diária dos dispositivos.
      * 
      * @param idade Integer - Idade para comparação no intervalo númerico das faixas de idade ou
      * para critério informativo
-     * @param periodo Character - Período (D, S, M ou A) para consideração na porcentagem resultante
      * @param qtdHorasUso Double - Quantidade de horas de uso dos dispositivos
      * @return Double - Porcentagem média de uso dos dispositivos
      */
-    public Double calcularPctgUso(Integer idade, Character periodo, Double qtdHorasUso) {
+    public Double calcularPctgUso(Integer idade, Double qtdHorasUso) {
         // Variável para armazenar a quantidade de horas de uso, podendo receber o argumento
         // repassado no método ou o retorno da busca de acordo com as faixas de idade
         Double mediaUsoHorasDia = qtdHorasUso == null 
             ? this.buscarHorasUsoFaixaIdades(idade)
             : qtdHorasUso;
     
-        if (mediaUsoHorasDia != null) {
-            // Verificação do período para critérios multiplicativos, porém logicamente o resultado
-            // não é alterado, independentemente da quantidade de dias considerados 
-            switch (periodo) {
-                case 'D': {
-                    return (mediaUsoHorasDia * 100) / this.mediaHorasAcordadoDia;
-                }
-                case 'S': {
-                    return (mediaUsoHorasDia * this.totalDiasSemana * 100) / 
-                        (this.mediaHorasAcordadoDia * this.totalDiasSemana);
-                }
-                case 'M': {
-                    return (mediaUsoHorasDia * this.totalDiasMes * 100) / 
-                        (this.mediaHorasAcordadoDia * this.totalDiasMes);
-                }
-                case 'A': {
-                    return (mediaUsoHorasDia * this.totalDiasAno * 100) / 
-                        (this.mediaHorasAcordadoDia * this.totalDiasAno);
-                }
-                default: {
-                    break;
-                }
-            }
+        if (mediaUsoHorasDia != null) { 
+            return (mediaUsoHorasDia * 100) / this.mediaHorasAcordadoDia;
         }
         
         return null;
     };
+    
+    public String gerarMensagem(Double pctg, Character periodo) {
+        switch (periodo) {
+            case 'D': {
+                return this.mensagem.gerarMensagemDia((this.mediaHorasAcordadoDia * pctg) / 100);
+            }
+            case 'S': {
+                return this.mensagem.gerarMensagemSemana(
+                    ((this.mediaHorasAcordadoDia * this.totalDiasSemana * pctg) / 100));
+            }
+            case 'M': {
+                return this.mensagem.gerarMensagemMes(
+                    ((this.mediaHorasAcordadoDia * this.totalDiasMes * pctg) / 100));
+            }
+            case 'A': {
+                return this.mensagem.gerarMensagemAno(
+                    ((this.mediaHorasAcordadoDia * this.totalDiasAno * pctg) / 100));
+            }
+            default: {
+                break;
+            }
+        }
+        
+        return null;
+    }
 }

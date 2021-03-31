@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Mensagem
+comment1.params=
+comment1.target=Mensagem()
+comment2.params=qtdHoras
+comment2.target=java.lang.String\ gerarMensagemDia(java.lang.Double)
+comment3.params=qtdHoras
+comment3.target=java.lang.String\ gerarMensagemSemana(java.lang.Double)
+comment4.params=qtdHoras
+comment4.target=java.lang.String\ gerarMensagemMes(java.lang.Double)
+comment5.params=qtdHoras
+comment5.target=java.lang.String\ gerarMensagemAno(java.lang.Double)
+numComments=6

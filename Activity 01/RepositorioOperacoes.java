@@ -5,7 +5,9 @@
 public interface RepositorioOperacoes {
     public Double buscarHorasUsoFaixaIdades(Integer idade);
     
-    public Double calcularPctgUso(Integer idade, Character periodo, Double qtdHorasUso);
+    public Double calcularPctgUso(Integer idade, Double qtdHorasUso);
+    
+    public String gerarMensagem(Double pctg, Character periodo);
     
     public void calcularPctgUsoFaixaEtariaEscolar();
     

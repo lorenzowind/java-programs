@@ -19,14 +19,23 @@ public class ControladorTarefa extends TempoUsoDispositivos {
                 itemFaixaEtariaEscolar.getSerie(),
                 itemFaixaEtariaEscolar.getIdade());
             
-            System.out.printf("- Porcentagem média por semana: %.2f%%\n", 
-                this.calcularPctgUso(itemFaixaEtariaEscolar.getIdade(), 'S', null));
+            // Variável para armazenar a porcentagem semanal de utilização do usuário
+            Double pctgSemana = this.calcularPctgUso(itemFaixaEtariaEscolar.getIdade(), null);
+            
+            System.out.printf("- Porcentagem média por semana: %.2f%%\n", pctgSemana);
+            System.out.printf("-- Total correspondente: %s\n", this.gerarMensagem(pctgSemana, 'S'));
                 
-            System.out.printf("- Porcentagem média por mês (30 dias): %.2f%%\n", 
-                this.calcularPctgUso(itemFaixaEtariaEscolar.getIdade(), 'M', null));
-                
-            System.out.printf("- Porcentagem média por ano (365 dias): %.2f%%\n\n", 
-                this.calcularPctgUso(itemFaixaEtariaEscolar.getIdade(), 'A', null));
+            // Variável para armazenar a porcentagem mensal de utilização do usuário
+            Double pctgMes = this.calcularPctgUso(itemFaixaEtariaEscolar.getIdade(), null);
+            
+            System.out.printf("- Porcentagem média por mês (30 dias): %.2f%%\n", pctgMes);
+            System.out.printf("-- Total correspondente: %s\n", this.gerarMensagem(pctgMes, 'M'));
+            
+            // Variável para armazenar a porcentagem anual de utilização do usuário    
+            Double pctgAno = this.calcularPctgUso(itemFaixaEtariaEscolar.getIdade(), null);
+            
+            System.out.printf("- Porcentagem média por ano (365 dias): %.2f%%\n", pctgAno);
+            System.out.printf("-- Total correspondente: %s\n\n", this.gerarMensagem(pctgAno, 'A'));
         }
     }
     
@@ -41,11 +50,11 @@ public class ControladorTarefa extends TempoUsoDispositivos {
         System.out.println("\nResultado:\n");
         
         // Variável para armazenar a porcentagem diária de utilização do usuário
-        Double pctgDia = this.calcularPctgUso(idade, 'D', qtdHorasUso);
+        Double pctgDia = this.calcularPctgUso(idade, qtdHorasUso);
         
         // Variável para armazenar a porcentagem diária de utilização de uma pessoa da mesma idade
         // mas no contexto do sistema educacional brasileiro
-        Double pctgDiaRef = this.calcularPctgUso(idade, 'D', null);
+        Double pctgDiaRef = this.calcularPctgUso(idade, null);
         
         // Comparações para verificar se o usuário está ou não no padrão de utilização
         if (pctgDia > pctgDiaRef) {
@@ -57,14 +66,21 @@ public class ControladorTarefa extends TempoUsoDispositivos {
         }
         
         System.out.printf("- Porcentagem média por dia: %.2f%%\n", pctgDia);
+        System.out.printf("-- Total correspondente: %s\n", this.gerarMensagem(pctgDia, 'D'));
                 
-        System.out.printf("- Porcentagem média por semana: %.2f%%\n", 
-            this.calcularPctgUso(idade, 'S', qtdHorasUso));
+        Double pctgSemana = this.calcularPctgUso(idade, qtdHorasUso);
+        
+        System.out.printf("- Porcentagem média por semana: %.2f%%\n", pctgSemana);
+        System.out.printf("-- Total correspondente: %s\n", this.gerarMensagem(pctgSemana, 'S'));
             
-        System.out.printf("- Porcentagem média por mês (30 dias): %.2f%%\n", 
-            this.calcularPctgUso(idade, 'M', qtdHorasUso));
+        Double pctgMes = this.calcularPctgUso(idade, qtdHorasUso);
+        
+        System.out.printf("- Porcentagem média por mês (30 dias): %.2f%%\n", pctgMes);
+        System.out.printf("-- Total correspondente: %s\n", this.gerarMensagem(pctgMes, 'M'));
             
-        System.out.printf("- Porcentagem média por ano (365 dias): %.2f%%\n\n", 
-            this.calcularPctgUso(idade, 'A', qtdHorasUso));
+        Double pctgAno = this.calcularPctgUso(idade, qtdHorasUso);
+        
+        System.out.printf("- Porcentagem média por ano (365 dias): %.2f%%\n", pctgAno);
+        System.out.printf("-- Total correspondente: %s\n\n", this.gerarMensagem(pctgAno, 'A'));
     }
 }
