@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=RepositorioOperacoes
+comment0.text=\r\n\ A\ interface\ RepositorioOperacoes\ \u00E9\ a\ estrutura\ respons\u00E1vel\ pela\ especifica\u00E7\u00E3o\ do\ comportamento\r\n\ que\ as\ classes\ de\ modelo\ e\ controle\ devem\ implementar.\r\n
 comment1.params=idade
 comment1.target=java.lang.Double\ buscarHorasUsoFaixaIdades(java.lang.Integer)
 comment2.params=idade\ periodo\ qtdHorasUso

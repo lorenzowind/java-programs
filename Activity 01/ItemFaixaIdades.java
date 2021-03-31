@@ -1,3 +1,7 @@
+/**
+ * A classe ItemFaixaIdades é a estrutura para descrever as características da faixa de idades,
+ * contendo idade mínima e máxima, além do tempo de uso dos dispositivos.
+ */
 public class ItemFaixaIdades {
     private final Integer idadeMinima;
     private final Integer idadeMaxima;

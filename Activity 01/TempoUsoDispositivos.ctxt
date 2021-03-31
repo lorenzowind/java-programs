@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=TempoUsoDispositivos
+comment0.text=\r\n\ A\ classe\ TempoUsoDispositivos\ \u00E9\ a\ camada\ de\ modelo\ do\ programa,\ sendo\ a\ estrutura\ que\ cont\u00E9m\ os\ \r\n\ m\u00E9todos\ e\ atributos\ referentes\ a\ parte\ l\u00F3gica\ do\ programa,\ gerenciando\ o\ comportamento\ dos\ dados.\r\n
 comment1.params=idade
 comment1.target=java.lang.Double\ buscarHorasUsoFaixaIdades(java.lang.Integer)
+comment1.text=\r\n\ M\u00E9todo\ para\ buscar\ a\ quantidade\ de\ horas\ de\ uso\ dos\ dispositivos\ de\ acordo\ com\ as\ faixas\ de\ \r\n\ idade\ armazenadas\ anteriormente.\r\n\ \r\n\ @param\ idade\ Integer\ -\ Idade\ para\ compara\u00E7\u00E3o\ no\ intervalo\ n\u00FAmerico\ das\ faixas\ de\ idade\r\n\ @return\ Double\ -\ Quantidade\ de\ horas\ encontrada\ de\ acordo\ com\ a\ idade\r\n
 comment2.params=idade\ periodo\ qtdHorasUso
 comment2.target=java.lang.Double\ calcularPctgUso(java.lang.Integer,\ java.lang.Character,\ java.lang.Double)
+comment2.text=\r\n\ M\u00E9todo\ para\ calcular\ a\ porcentagem\ de\ uso\ em\ um\ per\u00EDodo\ -\ podendo\ ser\ di\u00E1rio,\ semanal,\ mensal\r\n\ e\ anual\ -\ referente\ a\ determinada\ idade\ e\ opcionalmente\ a\ quantidade\ de\ horas\ de\ uso\ por\ dia\r\n\ dos\ dispositivos.\r\n\ \r\n\ @param\ idade\ Integer\ -\ Idade\ para\ compara\u00E7\u00E3o\ no\ intervalo\ n\u00FAmerico\ das\ faixas\ de\ idade\ ou\r\n\ para\ crit\u00E9rio\ informativo\r\n\ @param\ periodo\ Character\ -\ Per\u00EDodo\ (D,\ S,\ M\ ou\ A)\ para\ considera\u00E7\u00E3o\ na\ porcentagem\ resultante\r\n\ @param\ qtdHorasUso\ Double\ -\ Quantidade\ de\ horas\ de\ uso\ dos\ dispositivos\r\n\ @return\ Double\ -\ Porcentagem\ m\u00E9dia\ de\ uso\ dos\ dispositivos\r\n
 numComments=3

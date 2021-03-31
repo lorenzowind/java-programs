@@ -1,3 +1,7 @@
+/**
+ * A classe ItemFaixaEtariaEscolar é a estrutura para descrever as características da faixa etária
+ * escolar, contendo nível, série e idade correspondente.
+ */
 public class ItemFaixaEtariaEscolar {
     private final String nivel;
     private final String serie;

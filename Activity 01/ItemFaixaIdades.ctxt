@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=ItemFaixaIdades
+comment0.text=\r\n\ A\ classe\ ItemFaixaIdades\ \u00E9\ a\ estrutura\ para\ descrever\ as\ caracter\u00EDsticas\ da\ faixa\ de\ idades,\r\n\ contendo\ idade\ m\u00EDnima\ e\ m\u00E1xima,\ al\u00E9m\ do\ tempo\ de\ uso\ dos\ dispositivos.\r\n
 comment1.params=idadeMinima\ idadeMaxima\ tempoUso
 comment1.target=ItemFaixaIdades(java.lang.Integer,\ java.lang.Integer,\ java.lang.Double)
 comment2.params=

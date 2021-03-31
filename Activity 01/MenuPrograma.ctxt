@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MenuPrograma
-comment0.text=\r\n\ Escreva\ a\ descri\u00E7\u00E3o\ da\ classe\ Menu\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (n\u00FAmero\ de\ vers\u00E3o\ ou\ data)\r\n
+comment0.text=\r\n\ A\ classe\ MenuPrograma\ \u00E9\ a\ camada\ de\ apresenta\u00E7\u00E3o\ do\ programa,\ sendo\ a\ estrutura\ que\ cont\u00E9m\ o\ \r\n\ m\u00E9todo\ main,\ e\ al\u00E9m\ disso\ um\ fluxo\ de\ entrada\ a\ fim\ de\ controlar\ as\ op\u00E7\u00F5es\ do\ \u00FAsuario,\ \r\n\ encaminhando-o\ para\ a\ tarefa\ 01,\ tarefa\ 02\ ou\ saindo\ do\ programa.\ Essa\ classe\ tamb\u00E9m\ \u00E9\ \r\n\ respons\u00E1vel\ pela\ tratativa\ e\ valida\u00E7\u00E3o\ das\ informa\u00E7\u00F5es\ recebidas.\r\n\ \r\n\ @author\ (Lorenzo\ Windmoller\ Martins\ |\ 21104284-1)\ \r\n\ @version\ (v.01\ |\ 30/03/21)\r\n
 comment1.params=
 comment1.target=void\ main()
 numComments=2
