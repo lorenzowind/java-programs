@@ -44,14 +44,15 @@ public abstract class TempoUsoDispositivos implements RepositorioOperacoes, Repo
     public Double buscarHorasUsoFaixaIdades(Integer idade) {
         // Laço para verificação do intervalo da faixa de idades
         for (int i = 0; i < this.faixaIdades.length; i++) {
-            if ((idade >= this.faixaIdades[i].getIdadeMinima() && 
-                idade <= this.faixaIdades[i].getIdadeMaxima()) || 
-                faixaIdades.length - 1 == i) {
+            if (idade >= this.faixaIdades[i].getIdadeMinima() && 
+                idade <= this.faixaIdades[i].getIdadeMaxima()) {
                 return this.faixaIdades[i].getTempoUso();
             }
         }
         
-        return null;
+        // Retorno padrão do último registro caso a idade repassada como argumento não tenha sido
+        // encontrada no array
+        return this.faixaIdades[faixaIdades.length - 1].getTempoUso();
     }
     
     /**
@@ -69,36 +70,49 @@ public abstract class TempoUsoDispositivos implements RepositorioOperacoes, Repo
         Double mediaUsoHorasDia = qtdHorasUso == null 
             ? this.buscarHorasUsoFaixaIdades(idade)
             : qtdHorasUso;
-    
-        if (mediaUsoHorasDia != null) { 
-            return (mediaUsoHorasDia * 100) / this.mediaHorasAcordadoDia;
-        }
         
-        return null;
+        // Retorno do cálculo referente a porcentagem de utilização diária dos dispositivos
+        return (mediaUsoHorasDia * 100) / this.mediaHorasAcordadoDia;
     };
     
+    
+    /**
+     * Método para gerar uma mensagem formatada contendo informações relativas ao tempo de utilização
+     * dos dispostivos de acordo com a porcentagem média e o período requerido (diário, semanal, 
+     * mensal ou anual).
+     * 
+     * @param pctg Double - Porcentagem média de uso dos dispositivos
+     * @param periodo Character - Periodo de utilização, que pode ser D (diário), S (semanal), M 
+     * (mensal) ou A (anual)
+     * @return String - Porcentagem média de uso dos dispositivos
+     */
     public String gerarMensagem(Double pctg, Character periodo) {
+        // Verificação do período e tratativa da mensagem
         switch (periodo) {
             case 'D': {
+                // Retorno da mensagem formatada repassando a quantidade de horas de uso diário 
+                // a partir do cálculo inverso da porcentagem
                 return this.mensagem.gerarMensagemDia((this.mediaHorasAcordadoDia * pctg) / 100);
             }
             case 'S': {
+                // Retorno da mensagem formatada repassando a quantidade de horas de uso semanal 
+                // a partir do cálculo inverso da porcentagem
                 return this.mensagem.gerarMensagemSemana(
                     ((this.mediaHorasAcordadoDia * this.totalDiasSemana * pctg) / 100));
             }
             case 'M': {
+                // Retorno da mensagem formatada repassando a quantidade de horas de uso mensal 
+                // a partir do cálculo inverso da porcentagem
                 return this.mensagem.gerarMensagemMes(
                     ((this.mediaHorasAcordadoDia * this.totalDiasMes * pctg) / 100));
             }
-            case 'A': {
+            case 'A':
+            default: {
+                // Retorno da mensagem formatada repassando a quantidade de horas de uso anual 
+                // a partir do cálculo inverso da porcentagem
                 return this.mensagem.gerarMensagemAno(
                     ((this.mediaHorasAcordadoDia * this.totalDiasAno * pctg) / 100));
             }
-            default: {
-                break;
-            }
         }
-        
-        return null;
     }
 }

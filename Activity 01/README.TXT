@@ -23,10 +23,12 @@ dados informados, mediando a entrada e saída das informações;
 * Camada de modelo (Model): a classe TempoUsoDispositivos é responsável pelas operações lógicas,
 gerenciando o comportamento e estrutura dos dados. Além disso, a classe ItemFaixaIdades e
 ItemFaixaEtariaEscolar são modelos que descrevem os objetos utilizados dentro do contexto
-operacional do programa;
+operacional do programa, já a classe Mensagem consiste em um conjunto de métodos similares para
+utilização com uma finalidade específica;
 
 * Repósitório de operações: a interface RepositorioOperacoes é responsável pela definição e
-especificação dos métodos que devem ser implementados na camada de controle e modelo;
+especificação dos métodos que devem ser implementados na camada de controle e modelo, já a interface
+RepositorioConstantes contém atributos predefinidos com o intuito de reutilização;
 
 O trabalho contribuiu para compreensão dos seguintes conceitos:
 
