@@ -62,6 +62,9 @@ public class MenuPrograma {
                     // Variável para armazenar dia e mês de nascimento informados pelo usuário
                     String[] diaMesNascimento;
                     
+                    // Variáveis para armazenar dia e mês formatados com tipagem numérica
+                    Integer dia = 0, mes = 0;
+                    
                     // Variável para controle da validação das informações
                     Boolean valido = false;
                     
@@ -76,8 +79,8 @@ public class MenuPrograma {
                             System.out.println("\nAtenção, informe no formato correto!");
                         } else {
                             try {
-                                Integer dia = Integer.parseInt(diaMesNascimento[0]);
-                                Integer mes = Integer.parseInt(diaMesNascimento[1]);
+                                dia = Integer.parseInt(diaMesNascimento[0]);
+                                mes = Integer.parseInt(diaMesNascimento[1]);
                                 
                                 // Validação do tempo informado
                                 if (dia < 1 || dia > 31 || mes < 1 || mes > 12) {    
@@ -95,7 +98,7 @@ public class MenuPrograma {
                     scanner.nextLine();
                     
                     // Método referente a tarefa 01
-                    controladorTarefa.descobrirSignoZodiaco(diaMesNascimento);
+                    controladorTarefa.descobrirSignoZodiaco(dia, mes);
                     
                     System.out.println("Aperte enter para voltar...");
                     scanner.nextLine();
@@ -108,6 +111,9 @@ public class MenuPrograma {
                     
                     // Variável para armazenar data de nascimento informada pelo usuário
                     String[] dataNascimento;
+                    
+                    // Variáveis para armazenar dia, mês e ano formatados com tipagem numérica
+                    Integer dia = 0, mes = 0, ano = 0;
                     
                     // Variável para controle da validação das informações
                     Boolean valido = false;
@@ -123,9 +129,9 @@ public class MenuPrograma {
                             System.out.println("\nAtenção, informe no formato correto!");
                         } else {
                             try {
-                                Integer dia = Integer.parseInt(dataNascimento[0]);
-                                Integer mes = Integer.parseInt(dataNascimento[1]);
-                                Integer ano = Integer.parseInt(dataNascimento[2]);
+                                dia = Integer.parseInt(dataNascimento[0]);
+                                mes = Integer.parseInt(dataNascimento[1]);
+                                ano = Integer.parseInt(dataNascimento[2]);
                                 
                                 // Validação do tempo informado
                                 if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1900) {    
@@ -144,10 +150,10 @@ public class MenuPrograma {
                     
                     if (opcao == 2) {
                         // Método referente a tarefa 02
-                        controladorTarefa.descobrirIdade(dataNascimento);
+                        controladorTarefa.descobrirIdade(dia, mes, ano);
                     } else {
                         // Método referente a tarefa 03
-                        controladorTarefa.descobrirDiaSemana(dataNascimento);
+                        controladorTarefa.descobrirDiaSemana(dia, mes, ano);
                     }
                     
                     System.out.println("Aperte enter para voltar...");
