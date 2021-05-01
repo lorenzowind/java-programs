@@ -93,9 +93,9 @@ public class IdadeAcumulada {
             this.dataAtual.getMes() > this.mesNacimento) {
             this.anosAcumulados = this.dataAtual.getAno() - this.anoNascimento;
             this.diasAcumulados = this.dataAtual.getDia() + 
-                ((this.dataAtual.getMes() - this.mesNacimento) * 30);
+                ((this.dataAtual.getMes() - 1 - this.mesNacimento) * 30);
             this.mesesDifAniv = 12 - this.dataAtual.getMes() + this.mesNacimento;
-            this.diasDifAniv = 30 - this.dataAtual.getDia() + this.diaNascimento;
+            this.diasDifAniv = this.dataAtual.getDia() - this.diaNascimento;
         } else if (this.dataAtual.getDia() == this.diaNascimento &&
             this.dataAtual.getMes() < this.mesNacimento) {
             this.anosAcumulados = this.dataAtual.getAno() - this.anoNascimento;
@@ -106,7 +106,7 @@ public class IdadeAcumulada {
             this.dataAtual.getMes() > this.mesNacimento) {
             this.anosAcumulados = this.dataAtual.getAno() - this.anoNascimento;
             this.diasAcumulados = ((this.dataAtual.getMes() - this.mesNacimento) * 30);
-            this.mesesDifAniv = this.dataAtual.getMes() - this.mesNacimento;
+            this.mesesDifAniv = 12 - this.dataAtual.getMes() + this.mesNacimento;
             this.diasDifAniv = 0;
         }
     }

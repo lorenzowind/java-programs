@@ -58,5 +58,11 @@ public class ControladorTarefa extends NascimentoUsuario {
      * @param ano Integer - Ano de nascimento informado pelo usuário
     */
     public void descobrirDiaSemana(Integer dia, Integer mes, Integer ano) {
+        System.out.println("\nResultado:\n");
+                
+        // Variável para armazenar o dia da semana do nascimento do usuário
+        String diaSemana = this.buscarDiaSemana(dia, mes, ano);
+        
+        System.out.printf("O dia semana do seu nascimento é: %s.\n\n", diaSemana);
     }
 }

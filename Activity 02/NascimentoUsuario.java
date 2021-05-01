@@ -18,4 +18,29 @@ public abstract class NascimentoUsuario implements RepositorioOperacoes, Reposit
         
         return this.signosZodiaco[this.signosZodiaco.length - 1].getNome();
     }
+    
+    /**
+     * Método que busca o dia da semana correspondente ao dia, mês e ano repassados como argumento.
+     * 
+     * @param dia Integer - Dia qualquer entre 1 e 31
+     * @param mes Integer - Mês qualquer entre 1 e 12
+     * @param ano Integer - Ano qualquer maior que 1899
+     */
+    public String buscarDiaSemana(Integer dia, Integer mes, Integer ano) {
+        Integer auxMes = mes;
+        
+        if (mes == 1) {
+            auxMes = 13;
+        } else if (mes == 2) { 
+            auxMes = 14;
+        }
+        
+        Integer j = ano / 100;
+        Integer k = ano % 100 ;
+        double h = (dia + ((26 * (auxMes + 1)) / 10) + k + (k / 4) + (j / 4) - (2 * j)) % 7;
+        
+        Integer index = (int) h;
+        
+        return this.diasSemana[index];
+    }
 }

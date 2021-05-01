@@ -18,4 +18,8 @@ public interface RepositorioConstantes {
         new SignoZodiaco("Aquário", 21, 1, 18, 2),
         new SignoZodiaco("Peixes", 19, 2, 20, 3),
     };
+    
+    // Array de string para armazenar os dias da semana
+    public final String[] diasSemana = {"Segunda-feira", "Terça-feira", "Quarta-feira",
+        "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"};
 }
