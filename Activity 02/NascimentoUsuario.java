@@ -3,9 +3,8 @@
  * métodos e atributos referentes a parte lógica do programa, gerenciando o comportamento dos dados.
  */
 public abstract class NascimentoUsuario implements RepositorioOperacoes, RepositorioConstantes {
-    
     /**
-     * Método para que busca o signo correspondente ao dia e mês repassados como argumento.
+     * Método que busca o signo correspondente ao dia e mês repassados como argumento.
      * 
      * @param dia Integer - Dia qualquer entre 1 e 31
      * @param mes Integer - Mês qualquer entre 1 e 12

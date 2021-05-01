@@ -31,6 +31,22 @@ public class ControladorTarefa extends NascimentoUsuario {
      * @param ano Integer - Ano de nascimento informado pelo usuário
     */
     public void descobrirIdade(Integer dia, Integer mes, Integer ano) {
+        System.out.println("\nResultado:\n");
+                
+        // Variável para armazenar o signo do zodíaco do usuário
+        IdadeAcumulada idadeAcumulada = new IdadeAcumulada(dia, mes, ano);
+        
+        System.out.printf("A sua idade é: %d anos e %d dias.\n\n", 
+            idadeAcumulada.getAnosAcumulados(),
+            idadeAcumulada.getDiasAcumulados());
+      
+        if (idadeAcumulada.getMesesDifAniv() == 0 && idadeAcumulada.getDiasDifAniv() == 0) {
+            System.out.println("Parabéns! Hoje é o seu aniversário.\n");
+        } else {
+            System.out.printf("O seu aniversário será daqui: %d meses e %d dias.\n\n", 
+                idadeAcumulada.getMesesDifAniv(),
+                idadeAcumulada.getDiasDifAniv());
+        }
     }
     
     /**
