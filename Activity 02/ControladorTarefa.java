@@ -14,6 +14,12 @@ public class ControladorTarefa extends NascimentoUsuario {
      * @param mes Integer - Mês de nascimento informado pelo usuário
     */
     public void descobrirSignoZodiaco(Integer dia, Integer mes) {
+        System.out.println("\nResultado:\n");
+                
+        // Variável para armazenar o signo do zodíaco do usuário
+        String signo = this.buscarSignoZodiaco(dia, mes);
+        
+        System.out.printf("O seu signo é: %s.\n\n", signo);
     }
     
     /**
