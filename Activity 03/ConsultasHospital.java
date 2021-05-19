@@ -1,24 +1,25 @@
+import java.util.ArrayList; 
 
 /**
- * Classe abstrata ConsultasHospital - escreva a descrição da classe aqui
- * 
- * @author (seu nome aqui)
- * @version (versão ou data)
+ * A classe ConsultasHospital é a camada de modelo do programa, sendo a estrutura que contém os 
+ * métodos e atributos referentes a parte lógica do programa, gerenciando o comportamento dos dados.
  */
-public abstract class ConsultasHospital
-{
-    // variáveis de instância - substitua o exemplo abaico pelo seu código
-    int x;
+public abstract class ConsultasHospital implements RepositorioOperacoes, RepositorioConstantes {
+    private GeradorCPF geradorCPF = new GeradorCPF();
+    
+    // ArrayList para armazenar os pacientes cadastrados
+    private ArrayList<Paciente> pacientes = new ArrayList<Paciente>() {{
+        add(new Paciente("Maria", geradorCPF.gerarCPF(), "ESTRELA", "febre", 2));
+        add(new Paciente("João", geradorCPF.gerarCPF(), "GIRASAUDE", "taquicardia", 3));
+    }};
 
     /**
-     * Um exemplo de método - substitua este exemplo pelo seu código
-     * 
-     * @param  y    um exemplo de parâmetro de método
-     * @return        a soma de x com y
+     * Método para adicionar paciente no ArrayList de pacientes. 
+     *  
+     * @param paciente Paciente - Instância de paciente
      */
-    public int sampleMethod(int y)
+    public void adicionarPaciente(Paciente paciente)
     {
-        // ponha seu código aqui
-        return x + y;
+        this.pacientes.add(paciente);
     }
 }

@@ -1,18 +1,10 @@
-
 /**
- * Escreva a descrição da interface RepositorioOperacoes aqui.
- * 
- * @author (seu nome) 
- * @version (número da versão ou data)
+ * A interface RepositorioOperacoes é a estrutura responsável pela especificação do comportamento
+ * que as classes de modelo e controle devem implementar.
  */
-
-public interface RepositorioOperacoes
-{
-    /**
-     * Exemplo de um cabeçalho de método - substitua este comentário pelo seu
-     * 
-     * @param  y    exemplo de um parâmetro de método
-     * @return        o resultado produzido pelo sampleMethod 
-     */
-    int sampleMethod(int y);
+public interface RepositorioOperacoes {
+    public void cadastrarPaciente(String nome, String cpf, String telefone, String convenio,
+        String diagnostico, Integer numConsultaMes);
+        
+    public void adicionarPaciente(Paciente paciente);
 }

@@ -45,7 +45,7 @@ public class MenuPrograma {
                     opcao = scanner.nextInt();
                     
                     // Validação da opção informada
-                    if (opcao < 1 || opcao > 4) {
+                    if (opcao < 1 || opcao > 7) {
                         System.out.println("\nAtenção, informe apenas 1, 2, 3, 4, 5, 6 ou 7!");
                     }
                 } catch (InputMismatchException e) {
@@ -63,14 +63,15 @@ public class MenuPrograma {
                     System.out.print("\f");
                     
                     // Variáveis para armazenar informações do paciente informadas pelo usuário
-                    String nome, cpf, telefone, convenio, diagnostico;
-                    Integer numConsultasMes;
+                    String nome, cpf = "", telefone, convenio, diagnostico;
+                    Integer numConsultasMes = 0;
                     
                     // Variável para controle da validação das informações
                     Boolean valido = false;
                     
-                    System.out.print("\nInforme o nome do paciente:");
+                    System.out.print("Informe o nome do paciente: ");
                     nome = scanner.next();
+                    scanner.nextLine();
                     
                     do {
                         System.out.println("\nDesejas gerar o CPF?");
@@ -79,52 +80,98 @@ public class MenuPrograma {
                         // Variável para armazenar a preferência do usuário em relação ao CPF
                         String preferenciaCPF = scanner.next();
                         
-                        if (preferenciaCPF.length != 1 || 
-                            preferenciaCPF != "S" || 
-                            preferenciaCPF != "N") {
+                        if (!preferenciaCPF.equals("S") && 
+                            !preferenciaCPF.equals("N")) {
                             System.out.println("\nAtenção, informe uma resposta válida!");
                         } else {
                             valido = true;
                         }
                         
                         if (valido) {
-                            if (preferenciaCPF == "S") {
-                                cpf = CPF.();
-                                
-                                System.out.printf("\nCPF do paciente: %s\n", cpf);
-                            } else {
-                                System.out.print("\nInforme o CPF do paciente:");
-                                cpf = scanner.next();
+                            if (preferenciaCPF.equals("S")) {
+                                cpf = new GeradorCPF().gerarCPF();
+                            } else {            
+                                valido = false;
+        
+                                do {
+                                    System.out.println("\nInforme o CPF do paciente:");
+                                    System.out.print("* formato (ddd.ddd.ddd-dd): ");
+                                    
+                                    cpf = scanner.next();
+                                    
+                                    if (cpf.length() != 14) {
+                                        System.out.println("\nAtenção, formato inválido!");
+                                    } else {
+                                        try {
+                                            for (Character digito : cpf.toCharArray()) {
+                                                if (digito != '.' && digito != '-') {
+                                                    Integer aux = 
+                                                        Integer.parseInt(digito.toString());
+                                                }
+                                            }
+                                            
+                                            valido = true;
+                                        } catch (NumberFormatException e) {  
+                                            System.out.println(
+                                                "\nAtenção, informe apenas números!");
+                                        }   
+                                    }
+                                } while (!valido);
                             }
                         }
                     } while (!valido);
                     
-                    System.out.print("\nInforme o telefone do paciente:");
-                    telefone = scanner.next();
+                    valido = false;
                     
-                    System.out.print("\nInforme o convênio do paciente:");
+                    do {
+                        System.out.println("\nInforme o telefone do paciente:");
+                        System.out.print("* formato (dddddddd): ");
+                        
+                        telefone = scanner.next();
+                        
+                        if (telefone.length() != 8) {
+                            System.out.println("\nAtenção, formato inválido!");
+                        } else {
+                            try {
+                                for (Character digito : telefone.toCharArray()) {
+                                    Integer aux = Integer.parseInt(digito.toString());
+                                }
+                                
+                                valido = true;
+                            } catch (NumberFormatException e) {  
+                                System.out.println("\nAtenção, informe apenas números!");
+                            }   
+                        }
+                    } while (!valido);
+                    
+                    System.out.print("\nInforme o convênio do paciente: ");
                     convenio = scanner.next();
+                    scanner.nextLine();
                     
-                    System.out.print("\nInforme o diagnóstico do paciente:");
+                    System.out.print("\nInforme o diagnóstico do paciente: ");
                     diagnostico = scanner.next();
+                    scanner.nextLine();
                     
                     valido = false;
                     
                     do {
                         try {
-                            System.out.print("\nInforme o número de consultas no mês:");
-                            numConsultas = scanner.nextInt();
+                            System.out.print("\nInforme o número de consultas no mês: ");
+                            numConsultasMes = scanner.nextInt();
                             
                             valido = true;
-                        } catch (Error e) {  
+                        } catch (InputMismatchException e) {  
                             System.out.println("\nAtenção, informe apenas números!");
+                    
+                            scanner.nextLine();
                         }
                     } while (!valido);
                     
                     scanner.nextLine();
                     
                     // Método referente a tarefa 01
-                    controladorTarefa.(nome, cpf, telefone, convenio, diagnostico, numConsultasMes);
+                    controladorTarefa.cadastrarPaciente(nome, cpf, telefone, convenio, diagnostico, 
+                        numConsultasMes);
                     
                     System.out.println("Aperte enter para voltar...");
                     scanner.nextLine();
@@ -137,10 +184,10 @@ public class MenuPrograma {
                     
                     if (opcao == 2) {
                         // Método referente a tarefa 02
-                        controladorTarefa.();
+                        // controladorTarefa.();
                     } else {
                         // Método referente a tarefa 06
-                        controladorTarefa.();
+                        //controladorTarefa.();
                     }
                     
                     System.out.println("Aperte enter para voltar...");
@@ -154,7 +201,7 @@ public class MenuPrograma {
                     System.out.print("\f");
                     
                     // Variável para armazenar a preferência do usuário em relação à tarefa 05
-                    String preferenciaConsulta;
+                    String preferenciaConsulta = "";
                     
                     // Variável para controle da validação das informações
                     Boolean valido = false;
@@ -166,24 +213,23 @@ public class MenuPrograma {
                            
                             preferenciaConsulta = scanner.next();
                             
-                            if (preferenciaConsulta.length != 1 || 
-                                preferenciaConsulta != "1" || 
-                                preferenciaConsulta != "N") {
+                            if (!preferenciaConsulta.equals("1") &&
+                                !preferenciaConsulta.equals("N")) {
                                 System.out.println("\nAtenção, informe uma resposta válida!");
                             } else {
                                 valido = true;
                             }
                             
                             if (valido) {
-                                if (preferenciaConsulta == "N") {
+                                if (preferenciaConsulta.equals("N")) {
                                     // Método referente a tarefa 05
-                                    controladorTarefa.();
+                                    //controladorTarefa.();
                                 }
                             }
                         } while (!valido);
                     }
                     
-                    if (opcao == 3 || opcao == 4 || preferenciaConsulta == "1") {
+                    if (opcao == 3 || opcao == 4 || preferenciaConsulta.equals("1")) {
                         // Variável para armazenar o nome do paciente informado pelo usuário
                         String nome;
                         
@@ -194,13 +240,13 @@ public class MenuPrograma {
                         
                         if (opcao == 3) {
                             // Método referente a tarefa 03
-                            controladorTarefa.();
+                            //controladorTarefa.();
                         } else if (opcao == 4) {
                             // Método referente a tarefa 04
-                            controladorTarefa.();
+                            //controladorTarefa.();
                         } else {
                             // Método referente a tarefa 05
-                            controladorTarefa.();
+                            //controladorTarefa.();
                         }
                     }
                     
