@@ -22,4 +22,8 @@ public abstract class ConsultasHospital implements RepositorioOperacoes, Reposit
     {
         this.pacientes.add(paciente);
     }
+    
+    public ArrayList<Paciente> getPacientes() {
+        return this.pacientes;
+    }
 }

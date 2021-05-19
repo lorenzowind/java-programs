@@ -24,7 +24,7 @@ public class Paciente {
         Integer numConsultaMes) {
         this.nome = nome;
         this.cpf = cpf;
-        this.telefone = cpf.substring(0,7);
+        this.telefone = cpf.replace(".", "").substring(0,8);
         this.convenio = convenio;
         this.diagnostico = diagnostico;
         this.numConsultaMes = numConsultaMes;

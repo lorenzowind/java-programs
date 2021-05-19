@@ -184,7 +184,7 @@ public class MenuPrograma {
                     
                     if (opcao == 2) {
                         // Método referente a tarefa 02
-                        // controladorTarefa.();
+                        controladorTarefa.listarPacientes();
                     } else {
                         // Método referente a tarefa 06
                         //controladorTarefa.();

@@ -5,6 +5,8 @@
 public interface RepositorioOperacoes {
     public void cadastrarPaciente(String nome, String cpf, String telefone, String convenio,
         String diagnostico, Integer numConsultaMes);
+
+    public void listarPacientes();
         
     public void adicionarPaciente(Paciente paciente);
 }
