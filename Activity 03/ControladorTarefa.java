@@ -30,20 +30,26 @@ public class ControladorTarefa extends ConsultasHospital {
     }
     
     /**
-     * Método referente a tarefa 01, que consiste em cadastrar um paciente.
-     * 
-     * @param nome String - Nome do paciente informado pelo usuário
-     * @param cpf String - CPF do paciente informado pelo usuário ou gerado pela classe CPF
-     * @param telefone String - Telefone do paciente informado pelo usuário
-     * @param convenio String - Convênio do paciente informado pelo usuário
-     * @param diagnostico String - Diagnóstico do paciente informado pelo usuário
-     * @param numConsultasMes Integer - Número de consultas do mês informado pelo usuário
+     * Método referente a tarefa 02, que consiste em listar os pacientes.
     */
     public void listarPacientes() {
         System.out.println("Pacientes cadastrados:\n");
-                
+         
+        // Laço de repetição para percorrer todos os pacientes       
         for (Paciente paciente : this.getPacientes()) {
             System.out.printf("%s\n\n", paciente.toString());
         }
+    }
+    
+    /**
+     * Método referente a tarefa 06, que consiste em descobrir o nome do paciente com mais vogais.
+    */
+    public void descobrirNomeMaisVogais() {
+        System.out.println("Nome do paciente com mais vogais:\n");
+                
+        Paciente pacienteEncontrado = this.encontrarNomeMaisVogais();
+        
+        System.out.printf("%s\n\n", pacienteEncontrado != null ? 
+            pacienteEncontrado.toString() : "Nenhum paciente");
     }
 }

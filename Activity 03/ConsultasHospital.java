@@ -1,4 +1,5 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.text.Normalizer;
 
 /**
  * A classe ConsultasHospital é a camada de modelo do programa, sendo a estrutura que contém os 
@@ -25,5 +26,38 @@ public abstract class ConsultasHospital implements RepositorioOperacoes, Reposit
     
     public ArrayList<Paciente> getPacientes() {
         return this.pacientes;
+    }
+    
+    public Paciente encontrarNomeMaisVogais() {
+        Paciente pacienteEncontrado = null;
+        Integer numVogaisMax = 0;
+        
+        // Laço de repetição para percorrer todos os pacientes
+        for (Paciente paciente : this.getPacientes()) {
+            Integer numVogais = 0;
+            
+            // Operações para tratativa do nome do paciente, removendo letras maiúsculas e retirando 
+            // os acentos
+            String nome = paciente.getNome().toLowerCase();
+            nome = Normalizer.normalize(nome, Normalizer.Form.NFD);
+            nome = nome.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+            
+            // Laço de repetição para percorrer cada letra do nome do paciente
+            for (Character letra : paciente.getNome().toLowerCase().toCharArray()) {
+                // Verificação se a letra corresponde a uma vogal
+                if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
+                    numVogais += 1;
+                }
+            }
+            
+            // Verificação se o número de vogais do nome atual da repetição supera o número 
+            // anteriormente armazenado
+            if (numVogais >= numVogaisMax) {
+                numVogaisMax = numVogais;
+                pacienteEncontrado = paciente;
+            }    
+        }
+        
+        return pacienteEncontrado;
     }
 }

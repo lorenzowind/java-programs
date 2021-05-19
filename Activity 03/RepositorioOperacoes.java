@@ -7,6 +7,8 @@ public interface RepositorioOperacoes {
         String diagnostico, Integer numConsultaMes);
 
     public void listarPacientes();
+    
+    public void descobrirNomeMaisVogais();
         
     public void adicionarPaciente(Paciente paciente);
 }

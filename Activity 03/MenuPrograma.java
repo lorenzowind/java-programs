@@ -187,7 +187,7 @@ public class MenuPrograma {
                         controladorTarefa.listarPacientes();
                     } else {
                         // Método referente a tarefa 06
-                        //controladorTarefa.();
+                        controladorTarefa.descobrirNomeMaisVogais();
                     }
                     
                     System.out.println("Aperte enter para voltar...");
