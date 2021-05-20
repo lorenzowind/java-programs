@@ -42,6 +42,20 @@ public class ControladorTarefa extends ConsultasHospital {
     }
     
     /**
+     * Método referente a tarefa 05, que consiste em descobrir o valor total das consultas de todos
+     * os pacientes.
+    */
+    public void consultarValorPagarTodosPacientes() {
+        System.out.println("\nPacientes:\n");
+         
+        // Laço de repetição para percorrer todos os pacientes       
+        for (Paciente paciente : this.getPacientes()) {
+            System.out.printf("%s\nValor total a pagar: R$%.2f\n\n", paciente.toString(),
+                this.calcularValorPagarConsulta(paciente));
+        }
+    }
+    
+    /**
      * Método referente a tarefa 06, que consiste em descobrir o nome do paciente com mais vogais.
     */
     public void descobrirNomeMaisVogais() {

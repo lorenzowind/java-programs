@@ -9,6 +9,12 @@ public interface RepositorioOperacoes {
     public void listarPacientes();
     
     public void descobrirNomeMaisVogais();
-        
+    
+    public void consultarValorPagarTodosPacientes();
+    
     public void adicionarPaciente(Paciente paciente);
+    
+    public Paciente encontrarNomeMaisVogais();
+    
+    public Double calcularValorPagarConsulta(Paciente paciente);
 }

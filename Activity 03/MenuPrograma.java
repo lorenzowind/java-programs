@@ -208,12 +208,12 @@ public class MenuPrograma {
                     
                     if (opcao == 5) {
                         do {
-                            System.out.println("\nDesejas consultar apenas um paciente ou todos?");
-                            System.out.print("* (1/N): ");
+                            System.out.println("Desejas consultar um paciente específico?");
+                            System.out.print("* (S/N): ");
                            
                             preferenciaConsulta = scanner.next();
                             
-                            if (!preferenciaConsulta.equals("1") &&
+                            if (!preferenciaConsulta.equals("S") &&
                                 !preferenciaConsulta.equals("N")) {
                                 System.out.println("\nAtenção, informe uma resposta válida!");
                             } else {
@@ -223,13 +223,15 @@ public class MenuPrograma {
                             if (valido) {
                                 if (preferenciaConsulta.equals("N")) {
                                     // Método referente a tarefa 05
-                                    //controladorTarefa.();
+                                    controladorTarefa.consultarValorPagarTodosPacientes();
                                 }
                             }
                         } while (!valido);
                     }
+                        
+                    scanner.nextLine();
                     
-                    if (opcao == 3 || opcao == 4 || preferenciaConsulta.equals("1")) {
+                    if (opcao == 3 || opcao == 4 || preferenciaConsulta.equals("S")) {
                         // Variável para armazenar o nome do paciente informado pelo usuário
                         String nome;
                         

@@ -13,6 +13,10 @@ public abstract class ConsultasHospital implements RepositorioOperacoes, Reposit
         add(new Paciente("Maria", geradorCPF.gerarCPF(), "ESTRELA", "febre", 2));
         add(new Paciente("João", geradorCPF.gerarCPF(), "GIRASAUDE", "taquicardia", 3));
     }};
+    
+    public ArrayList<Paciente> getPacientes() {
+        return this.pacientes;
+    }
 
     /**
      * Método para adicionar paciente no ArrayList de pacientes. 
@@ -24,10 +28,20 @@ public abstract class ConsultasHospital implements RepositorioOperacoes, Reposit
         this.pacientes.add(paciente);
     }
     
-    public ArrayList<Paciente> getPacientes() {
-        return this.pacientes;
+    /**
+     * Método para calcular valor total a pagar pelas consultas do mês. 
+     *  
+     * @return Paciente - Instância de paciente
+     */
+    public Double calcularValorPagarConsulta(Paciente paciente) {
+        return paciente.getNumConsultaMes() * this.valorConsulta;
     }
     
+    /**
+     * Método para encontrar nome do paciente com mais vogais. 
+     *  
+     * @return Paciente - Instância de paciente
+     */
     public Paciente encontrarNomeMaisVogais() {
         Paciente pacienteEncontrado = null;
         Integer numVogaisMax = 0;
