@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
  * tratativa e validação das informações recebidas.
  *
  * @author (Lorenzo Windmoller Martins | 21104284-1) 
- * @version (v.01 | 19/05/21)
+ * @version (v.01 | 20/05/21)
  */
 public class MenuPrograma {
     public static void main() {
