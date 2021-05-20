@@ -42,6 +42,33 @@ public class ControladorTarefa extends ConsultasHospital {
     }
     
     /**
+     * Método referente a tarefa 03, que consiste em alterar o diagnóstico de determinado paciente.
+    */
+    public void alterarDiagnosticoPaciente(Paciente paciente, String diagnostico) {
+        paciente.setDiagnostico(diagnostico);
+        
+        System.out.println("\nDiagnóstico do paciente alterado com sucesso!\n");
+    }
+    
+    /**
+     * Método referente a tarefa 04, que consiste em alterar o convênio de determinado paciente.
+    */
+    public void alterarConvenioPaciente(Paciente paciente, String convenio) {
+        paciente.setConvenio(convenio);
+        
+        System.out.println("\nConvênio do paciente alterado com sucesso!\n");
+    }
+    
+    /**
+     * Método referente a tarefa 05, que consiste em descobrir o valor total das consultas de
+     * determinado paciente.
+    */
+    public void consultarValorPagarPaciente(Paciente paciente) {
+        System.out.printf("\nValor total a pagar: R$%.2f\n\n",
+            this.calcularValorPagarConsulta(paciente));
+    }
+    
+    /**
      * Método referente a tarefa 05, que consiste em descobrir o valor total das consultas de todos
      * os pacientes.
     */
@@ -58,12 +85,27 @@ public class ControladorTarefa extends ConsultasHospital {
     /**
      * Método referente a tarefa 06, que consiste em descobrir o nome do paciente com mais vogais.
     */
-    public void descobrirNomeMaisVogais() {
+    public void descobrirNomePacienteMaisVogais() {
         System.out.println("Nome do paciente com mais vogais:\n");
                 
         Paciente pacienteEncontrado = this.encontrarNomeMaisVogais();
         
         System.out.printf("%s\n\n", pacienteEncontrado != null ? 
             pacienteEncontrado.toString() : "Nenhum paciente");
+    }
+    
+    /**
+     * Método auxiliar referente a tarefa 03, 04 e 05, que consiste em verificar se determinado
+     * paciente existe.
+    */
+    public Paciente verificarNomePaciente(String nome) {
+        // Laço de repetição para percorrer todos os pacientes   
+        for (Paciente paciente : this.getPacientes()) {
+            if (paciente.getNome().equals(nome)) {
+                return paciente;
+            }
+        }
+        
+        return null;
     }
 }

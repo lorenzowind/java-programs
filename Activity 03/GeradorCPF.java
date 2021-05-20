@@ -12,8 +12,16 @@ public class GeradorCPF {
      * 
      * @return String - CPF gerado
      */
-    public String gerarCPF()
-    {
-        return "111.111.111-11";
+    public String gerarCPF() {
+        String cpf = "";
+        
+        // Laço para geração de números randômicos conforme a quantidade de dígitos do CPF
+        for (int i = 0; i < 11; i++) {
+            cpf += Integer.toString((int)(Math.random() * 10));
+        }
+        
+        // Retorno do CPF gerado inserindo os caracteres especiais
+        return cpf.substring(0,3) + "." + cpf.substring(3,6) + "." + 
+            cpf.substring(6,9) + "-" + cpf.substring(9,11);
     }
 }

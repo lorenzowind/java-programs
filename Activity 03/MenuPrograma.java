@@ -187,7 +187,7 @@ public class MenuPrograma {
                         controladorTarefa.listarPacientes();
                     } else {
                         // Método referente a tarefa 06
-                        controladorTarefa.descobrirNomeMaisVogais();
+                        controladorTarefa.descobrirNomePacienteMaisVogais();
                     }
                     
                     System.out.println("Aperte enter para voltar...");
@@ -228,30 +228,44 @@ public class MenuPrograma {
                             }
                         } while (!valido);
                     }
-                        
-                    scanner.nextLine();
                     
                     if (opcao == 3 || opcao == 4 || preferenciaConsulta.equals("S")) {
-                        // Variável para armazenar o nome do paciente informado pelo usuário
-                        String nome;
+                        if (preferenciaConsulta.equals("S")) {
+                            System.out.print("\n");
+                        }
                         
-                        System.out.print("\nInforme o nome do paciente:");
-                        nome = scanner.next();
+                        System.out.print("Informe o nome do paciente: ");
+                        String nome = scanner.next();
                         
-                        scanner.nextLine();
+                        Paciente paciente = controladorTarefa.verificarNomePaciente(nome);
                         
-                        if (opcao == 3) {
-                            // Método referente a tarefa 03
-                            //controladorTarefa.();
-                        } else if (opcao == 4) {
-                            // Método referente a tarefa 04
-                            //controladorTarefa.();
+                        if (paciente != null) {
+                            System.out.printf("\nPaciente encontrado:\n%s\n\n", 
+                                paciente.toString());
+                            
+                            if (opcao == 3) {
+                                System.out.print("Informe o novo diagnóstico do paciente: ");
+                                String diagnostico = scanner.next();
+                                
+                                // Método referente a tarefa 03
+                                controladorTarefa.alterarDiagnosticoPaciente(paciente, 
+                                    diagnostico);
+                            } else if (opcao == 4) {
+                                System.out.print("Informe o novo convênio do paciente: ");
+                                String convenio = scanner.next();
+                                
+                                // Método referente a tarefa 04
+                                controladorTarefa.alterarConvenioPaciente(paciente, convenio);
+                            } else {
+                                // Método referente a tarefa 05
+                                controladorTarefa.consultarValorPagarPaciente(paciente);
+                            }
                         } else {
-                            // Método referente a tarefa 05
-                            //controladorTarefa.();
+                            System.out.println("\nPaciente não encontrado!\n");
                         }
                     }
                     
+                    scanner.nextLine();
                     System.out.println("Aperte enter para voltar...");
                     scanner.nextLine();
                     

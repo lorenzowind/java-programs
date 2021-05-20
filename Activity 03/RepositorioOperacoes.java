@@ -8,9 +8,17 @@ public interface RepositorioOperacoes {
 
     public void listarPacientes();
     
-    public void descobrirNomeMaisVogais();
+    public void alterarDiagnosticoPaciente(Paciente paciente, String diagnostico);
+    
+    public void alterarConvenioPaciente(Paciente paciente, String convenio);
+    
+    public void consultarValorPagarPaciente(Paciente paciente);
     
     public void consultarValorPagarTodosPacientes();
+    
+    public void descobrirNomePacienteMaisVogais();
+    
+    public Paciente verificarNomePaciente(String nome);
     
     public void adicionarPaciente(Paciente paciente);
     

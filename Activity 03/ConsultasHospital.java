@@ -23,8 +23,7 @@ public abstract class ConsultasHospital implements RepositorioOperacoes, Reposit
      *  
      * @param paciente Paciente - Instância de paciente
      */
-    public void adicionarPaciente(Paciente paciente)
-    {
+    public void adicionarPaciente(Paciente paciente) {
         this.pacientes.add(paciente);
     }
     
