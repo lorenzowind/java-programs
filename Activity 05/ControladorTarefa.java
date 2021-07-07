@@ -79,7 +79,17 @@ public class ControladorTarefa extends ControleEstacionamento {
         }
     }
     
-    public void calcularCategoria() {       
+    public void calcularCategoria() {
+        Integer[] categoriaEspecial = this.buscarCategoriaEspecial();
+        
+        if (categoriaEspecial[1] != 0) {
+            System.out.println("A categoria especial que mais utilizou o estacionamento da loja foi:");
+            
+            System.out.printf("\nCategoria: %d\n", categoriaEspecial[0] + 1);
+            System.out.printf("Quantidade de veículos: %d\n\n", categoriaEspecial[1]);
+        } else {
+            System.out.println("Nenhum veículo foi registrado no estacionamento!\n");
+        }
     }
     
     public void descobrirClienteIdoso() {       
