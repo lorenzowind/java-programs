@@ -6,7 +6,17 @@
 public class ControladorTarefa extends ControleEstacionamento {
     public ControladorTarefa() {
     }
-    
+
+    /**
+     * Método referente a tarefa 01, que consiste em registrar o carro de determinado cliente na 
+     * matriz estacionamento através de informações de alocação.
+     * 
+     * @param diaSemana String - Dia da semana
+     * @param categoria Integer - Categoria do cliente
+     * @param linha Integer - Linha da matriz estacionamento
+     * @param coluna Integer - Coluna da matriz estacionamento
+     * @param placa String - Placa do carro do cliente
+     */    
     public void preencherPlanilha(String diaSemana, Integer categoria, Integer linha, Integer coluna, 
         String placa) {             
         if (linha == 1 && coluna == 1 && categoria != 1) {
@@ -29,6 +39,12 @@ public class ControladorTarefa extends ControleEstacionamento {
         System.out.println("\nO carro foi adicionado no registro de estacionamento com sucesso!\n");
     }
     
+    /**
+     * Método referente a tarefa 02, que consiste em gerar um relatório semanal com informações a
+     * respeito da quantidade de veículos e as respectivas placas.
+     * 
+     * @param diaSemana String - Dia da semana
+     */   
     public void gerarRelatorio(String diaSemana) {
         Integer quantidadeCategoria = this.buscarQuantidadeCategoriaPorDia(1, diaSemana);
         
@@ -79,6 +95,10 @@ public class ControladorTarefa extends ControleEstacionamento {
         }
     }
     
+    /**
+     * Método referente a tarefa 03, que consiste em calcular a categoria especial de cliente que 
+     * mais utilizou o estacionamento.
+     */  
     public void calcularCategoria() {
         Integer[] categoriaEspecial = this.buscarCategoriaEspecial();
         
@@ -92,6 +112,10 @@ public class ControladorTarefa extends ControleEstacionamento {
         }
     }
     
+    /**
+     * Método referente a tarefa 04, que consiste em descobrir os clientes idosos que retornaram ao
+     * estacionamento.
+     */  
     public void descobrirClienteIdoso() {
         Carro[] carrosClientesIdosos = this.buscarClientesIdosos();
         String[] placasCarros = new String[1];

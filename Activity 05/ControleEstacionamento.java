@@ -5,11 +5,14 @@
 public abstract class ControleEstacionamento implements RepositorioOperacoes {
     // Matriz para armazenar os carros no estacionamento
     private Carro[][][] estacionamento = new Carro[2][5][1];
-
-    public Carro[][][] getEstacionamento() {
-        return this.estacionamento;
-    }
-    
+        
+    /**
+     * Método para adicionar um carro na matriz estacionamento.
+     * 
+     * @param linha Integer - Linha da matriz estacionamento
+     * @param coluna Integer - Coluna da matriz estacionamento
+     * @param carro Carro - Objeto da classe Carro
+     */
     public void adicionarCarro(Integer linha, Integer coluna, Carro carro) {
         Integer carrosArmazenados = estacionamento[linha][coluna].length;
         
@@ -28,7 +31,16 @@ public abstract class ControleEstacionamento implements RepositorioOperacoes {
             estacionamento[linha][coluna][carrosArmazenados - 1] = carro;
         }
     }
-    
+        
+    /**
+     * Método para buscar a quantidade de carros de determinada categoria que utilizaram o
+     * estacionamento em um dia da semana específico.
+     * 
+     * @param categoria Integer - Categoria do cliente
+     * @param diaSemana String - Dia da semana
+     * 
+     * @return Integer - Quantidade de carros
+     */
     public Integer buscarQuantidadeCategoriaPorDia(Integer categoria, String diaSemana) {
         Integer acumuladorCategoria = 0;
         
@@ -49,7 +61,16 @@ public abstract class ControleEstacionamento implements RepositorioOperacoes {
         
         return acumuladorCategoria;
     }
-    
+        
+    /**
+     * Método para buscar os carros de determinada categoria que utilizaram o estacionamento em um 
+     * dia da semana específico.
+     * 
+     * @param categoria Integer - Categoria do cliente
+     * @param diaSemana String - Dia da semana
+     * 
+     * @return Carro[] - Array de carros
+     */
     public Carro[] buscarVeiculosCategoriaPorDia(Integer categoria, String diaSemana) {
         Carro[] acumuladorCarros = new Carro[1];
         
@@ -86,7 +107,14 @@ public abstract class ControleEstacionamento implements RepositorioOperacoes {
         
         return acumuladorCarros;
     }
-    
+     
+    /**
+     * Método para buscar a categoria especial e a quantidade de carros que mais utilizou o
+     * estacionamento.
+     * 
+     * @return Integer[] - Array de inteiro, sendo a primeira posição o código da categoria e a
+     * segunda posição a quantidade de carros
+     */
     public Integer[] buscarCategoriaEspecial() {
         Integer[] categorias = new Integer[4];
         
@@ -122,6 +150,12 @@ public abstract class ControleEstacionamento implements RepositorioOperacoes {
         return new Integer[]{categoriaMaxima, quantidadeMaxima};
     }
     
+    /**
+     * Método para buscar os carros da categoria de clientes idosos que utilizaram o estacionamento
+     * mais de uma vez.
+     * 
+     * @return Carro[] - Array de carros
+     */
     public Carro[] buscarClientesIdosos() {
         Carro[] acumuladorCarros = new Carro[1];
         
