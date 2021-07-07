@@ -121,4 +121,39 @@ public abstract class ControleEstacionamento implements RepositorioOperacoes {
         
         return new Integer[]{categoriaMaxima, quantidadeMaxima};
     }
+    
+    public Carro[] buscarClientesIdosos() {
+        Carro[] acumuladorCarros = new Carro[1];
+        
+        for (int linha = 0; linha < 2; linha += 1) {
+            for (int coluna = 0; coluna < 5; coluna += 1) {
+                for (int indiceCarro = 0; indiceCarro < estacionamento[linha][coluna].length; 
+                    indiceCarro += 1) {
+                    if (estacionamento[linha][coluna][indiceCarro] != null) {
+                        if (estacionamento[linha][coluna][indiceCarro].getCategoria() == 1) {
+                            Integer carrosArmazenados = acumuladorCarros.length;
+            
+                            if (acumuladorCarros[carrosArmazenados - 1] != null) {
+                                Carro[] arrayCarros = acumuladorCarros;
+                                
+                                acumuladorCarros = new Carro[carrosArmazenados + 1];
+                                Integer indice = 0;
+                                
+                                for (Carro carroAux : arrayCarros) {
+                                    acumuladorCarros[indice++] = carroAux;
+                                }
+                                
+                                acumuladorCarros[indice] = estacionamento[linha][coluna][indiceCarro];
+                            } else {
+                                acumuladorCarros[carrosArmazenados - 1] = 
+                                    estacionamento[linha][coluna][indiceCarro];
+                            }  
+                        } 
+                    }   
+                }
+            }    
+        }
+        
+        return acumuladorCarros;
+    }
 }

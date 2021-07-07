@@ -92,6 +92,63 @@ public class ControladorTarefa extends ControleEstacionamento {
         }
     }
     
-    public void descobrirClienteIdoso() {       
+    public void descobrirClienteIdoso() {
+        Carro[] carrosClientesIdosos = this.buscarClientesIdosos();
+        String[] placasCarros = new String[1];
+        Boolean clienteRetornou = false;
+        
+        for (int indice = 0; indice < carrosClientesIdosos.length; indice += 1) {
+            Boolean placaVista = false;
+            Integer quantidade = 0;
+            
+            if (carrosClientesIdosos[indice] != null) {                
+                for (int indicePlaca = 0; indicePlaca < placasCarros.length; indicePlaca += 1) {
+                    if (placasCarros[indicePlaca] != null) {
+                        if (carrosClientesIdosos[indice].getPlaca().equals(placasCarros[indicePlaca])) {
+                            placaVista = true;        
+                        }
+                    }
+                }
+                
+                if (!placaVista) {
+                    for (int indiceSec = 0; indiceSec < carrosClientesIdosos.length; indiceSec += 1) {
+                        if (carrosClientesIdosos[indice].getPlaca().
+                            equals(carrosClientesIdosos[indiceSec].getPlaca())) {
+                            quantidade++;    
+                        }
+                    }
+                    
+                    if (quantidade > 1) {
+                        clienteRetornou = true;
+                        
+                        System.out.printf("Cliente idoso com placa %s compareceu %d vezes\n\n", 
+                            carrosClientesIdosos[indice].getPlaca(), quantidade);
+                    }
+                        
+                    Integer placasArmazenadas = placasCarros.length;
+            
+                    if (placasCarros[placasArmazenadas - 1] != null) {
+                        String[] arrayPlacas = placasCarros;
+                        
+                        placasCarros = new String[placasArmazenadas + 1];
+                        Integer indiceAux = 0;
+                        
+                        for (String placaAux : arrayPlacas) {
+                            placasCarros[indiceAux++] = placaAux;
+                        }
+                        
+                        placasCarros[indiceAux] = carrosClientesIdosos[indice].getPlaca();
+                    } else {
+                        placasCarros[placasArmazenadas - 1] = 
+                            carrosClientesIdosos[indice].getPlaca();
+                    }  
+                }
+            }
+        }
+        
+            
+        if (!clienteRetornou) {
+            System.out.println("Nenhum cliente idoso retornou ao estacionamento!\n");
+        }
     }
 }
