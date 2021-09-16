@@ -5,90 +5,121 @@ import java.util.Scanner;
  */
 public class App
 {
-    public static void main(String[] args)
-    {
-        Question first = new Question();
-        first.setText("Quem é o inventor do Java?");
-        first.setAnswer("James Gosling");
+  public static void main(String[] args)
+  {
+    QuizAPI quizAPI = new QuizAPI(
+      "code", "Easy", 10, "FHSsFO5PUdqkPAKyvONvyheakA6ctbtr2ojdvYox"
+    );
+    
+    Prova exam = new Prova();
 
-        ChoiceQuestion second = new ChoiceQuestion();
-        second.setText("Em que país o inventor do Java nasceu?");
-        second.addChoice("Austrália", false);
-        second.addChoice("Canadá", true);
-        second.addChoice("Dinamarca", false);
-        second.addChoice("Estados Unidos da América", false);
-
-        TrueFalseQuestion third = new TrueFalseQuestion();
-        third.setText("A terra é plana?");
-        third.setAnswer("verdadeiro");
-
-        // presentQuestion(first);
-        // presentQuestion(second);
-
-        Prova prova = new Prova();
-        prova.addQuestao(first);
-        prova.addQuestao(second);
-        prova.addQuestao(third);
-        prova.exibirProva();
-
-        AplicacaoDeProva aplicacaoDeProva1 = new AplicacaoDeProva();
-        aplicacaoDeProva1.definirProva(prova);
-        aplicacaoDeProva1.cadastrarResposta("James Gosling", 1);
-        aplicacaoDeProva1.cadastrarResposta("2", 2);
-        aplicacaoDeProva1.cadastrarResposta("verdadeiro", 3);
-        aplicacaoDeProva1.imprimirRelatorio();
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - -");
-
-        AplicacaoDeProva aplicacaoDeProva2 = new AplicacaoDeProva();
-        aplicacaoDeProva2.definirProva(prova);
-        aplicacaoDeProva2.cadastrarResposta("James", 1);
-        aplicacaoDeProva2.cadastrarResposta("3", 2);
-        aplicacaoDeProva2.cadastrarResposta("verdadeiro", 3);
-        aplicacaoDeProva2.imprimirRelatorio();
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - -");
-
-        AplicacaoDeProva aplicacaoDeProva3 = new AplicacaoDeProva();
-        aplicacaoDeProva3.definirProva(prova);
-        aplicacaoDeProva3.cadastrarResposta("James", 1);
-        aplicacaoDeProva3.cadastrarResposta("3", 2);
-        aplicacaoDeProva3.cadastrarResposta("falso", 3);
-        aplicacaoDeProva3.imprimirRelatorio();
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - -");
-
-        AplicacaoDeProva aplicacaoEspecialDeProva1 = new AplicacaoEspecialDeProva();
-        aplicacaoEspecialDeProva1.definirProva(prova);
-        aplicacaoEspecialDeProva1.cadastrarResposta("James Gosling", 1);
-        aplicacaoEspecialDeProva1.cadastrarResposta("2", 2);
-        aplicacaoEspecialDeProva1.cadastrarResposta("verdadeiro", 3);
-        aplicacaoEspecialDeProva1.imprimirRelatorio();
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - -");
-
-        AplicacaoDeProva aplicacaoEspecialDeProva2 = new AplicacaoEspecialDeProva();
-        aplicacaoEspecialDeProva2.definirProva(prova);
-        aplicacaoEspecialDeProva2.cadastrarResposta("James", 1);
-        aplicacaoEspecialDeProva2.cadastrarResposta("3", 2);
-        aplicacaoEspecialDeProva2.cadastrarResposta("verdadeiro", 3);
-        aplicacaoEspecialDeProva2.imprimirRelatorio();
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - -");
-
-        AplicacaoDeProva aplicacaoEspecialDeProva3 = new AplicacaoEspecialDeProva();
-        aplicacaoEspecialDeProva3.definirProva(prova);
-        aplicacaoEspecialDeProva3.cadastrarResposta("James", 1);
-        aplicacaoEspecialDeProva3.cadastrarResposta("3", 2);
-        aplicacaoEspecialDeProva3.cadastrarResposta("falso", 3);
-        aplicacaoEspecialDeProva3.imprimirRelatorio();
+    for (Question question : quizAPI.getQuestions()) {
+      exam.addQuestao(question);
     }
 
-    /**
-     Presents a question to the user and checks the response.
-     @param q the question
-     */
-    public static void presentQuestion(Question q)
-    {
-        q.display();
-        System.out.print("Your answer: ");
-        Scanner in = new Scanner(System.in);
-        String response = in.nextLine();
-        System.out.println(q.checkAnswer(response));
-    }
+    String option = "0";
+
+    Scanner scanner = new Scanner(System.in);
+
+    AplicacaoDeProva examApplication = new AplicacaoDeProva();
+
+    do {
+      System.out.println("\n- - - - - - - - - - MENU - - - - - - - - - -");
+      
+      System.out.println("\n1 - Show exam");
+      System.out.println("2 - Generate new questions");
+      System.out.println("3 - Apply exam");
+      System.out.println("4 - Apply special exam");
+      System.out.println("5 - Show report of last exam");
+      System.out.println("6 - Leave");
+      
+      System.out.print("\nChoose an option: ");
+
+      option = scanner.nextLine();
+
+      switch (option) {
+        case "1": {
+          exam.exibirProva();
+          
+          break;         
+        }
+        case "2": {
+          Prova exam_ = new Prova();
+          
+          try {
+            for (Question question : quizAPI.getQuestions()) {
+              exam_.addQuestao(question);
+            }
+          } catch (Exception err) {
+            break;         
+          }
+          
+          exam = exam_;
+
+          break;         
+        }
+        case "3":
+        case "4": {
+          examApplication = 
+            option.equals("3")
+              ? new AplicacaoDeProva()
+              : new AplicacaoEspecialDeProva();
+
+          examApplication.definirProva(exam);
+
+          for (int i = 0; i < exam.getQuestoes().size(); i++) {
+            System.out.print("\n");
+
+            examApplication.cadastrarResposta(
+              presentQuestion(exam.recuperarQuestao(i + 1)), 
+              i + 1
+            );
+            
+            System.out.print("\nPress enter to continue...");
+            scanner.nextLine();
+          }
+
+          System.out.println("\nExam was finished successfully");
+
+          break;         
+        }
+        case "5": {
+          if (examApplication.getProva() != null) {
+            examApplication.imprimirRelatorio();
+          } else {
+            System.out.println("\nNo exam was done yet");
+          }
+
+          break;         
+        }
+        case "6": {
+          break;         
+        }
+        default: {
+          System.out.println("\nChoose a valid option");
+
+          break;         
+        }
+      }
+      
+      if (!option.equals("6")) {
+        System.out.print("\nPress enter to go back...");
+        scanner.nextLine();
+      }
+    } while (!option.equals("6"));
+
+    scanner.close();
+  }
+
+  /**
+   Presents a question to the user and checks the response.
+    @param q the question
+    */
+  public static String presentQuestion(Question q)
+  {
+    q.display();
+    System.out.print("Your answer: ");
+    Scanner in = new Scanner(System.in);
+    return in.nextLine();
+  }
 }

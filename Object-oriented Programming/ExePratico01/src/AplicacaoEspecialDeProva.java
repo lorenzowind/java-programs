@@ -21,6 +21,6 @@ public class AplicacaoEspecialDeProva extends AplicacaoDeProva {
       }
     }
 
-    return nota < 1 ? 0 : nota;
+    return nota < 0 ? 0 : nota;
   }
 }

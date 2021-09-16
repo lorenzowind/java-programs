@@ -24,29 +24,29 @@
 public class TrueFalseQuestion extends Question
 {
 
-    public void display()
-    {
-        System.out.print("Responda verdadeiro ou falso: ");
-        super.display();
-    }
+  public void display()
+  {
+    System.out.print("Answer true or false: ");
+    super.display();
+  }
 
-    public void setAnswer(String correctResponse)
-    {
-        String lowercaseAnswer = correctResponse.toLowerCase();
-        super.setAnswer(lowercaseAnswer);
-    }
+  public void setAnswer(String correctResponse)
+  {
+    String lowercaseAnswer = correctResponse.toLowerCase();
+    super.setAnswer(lowercaseAnswer);
+  }
 
-    public boolean checkAnswer(String answer)
+  public boolean checkAnswer(String answer)
+  {
+    String lowercaseAnswer = answer.toLowerCase();
+    if (lowercaseAnswer.matches(String.valueOf('t')) || (lowercaseAnswer.matches("true")))
     {
-        String lowercaseAnswer = answer.toLowerCase();
-        if (lowercaseAnswer.matches(String.valueOf('v')) || (lowercaseAnswer.matches("verdadeiro")))
-        {
-            return super.checkAnswer("verdadeiro");
-        }
-        else if (lowercaseAnswer.matches(String.valueOf('f')) || (lowercaseAnswer.matches("falso")))
-        {
-            return super.checkAnswer("falso");
-        }
-        return false;
+      return super.checkAnswer("true");
     }
+    else if (lowercaseAnswer.matches(String.valueOf('f')) || (lowercaseAnswer.matches("false")))
+    {
+      return super.checkAnswer("false");
+    }
+    return false;
+  }
 }

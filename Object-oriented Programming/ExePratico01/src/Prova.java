@@ -35,7 +35,7 @@ public class Prova {
       int questaoNumber = i + 1;
 
       System.out.println();
-      System.out.print("Questão " + questaoNumber + ": ");
+      System.out.print("Question " + questaoNumber + ": ");
       this.questoes.get(i).display();
       System.out.println("\n- - - - - - - - - - - - - - - - - - - - - -");
     }

@@ -26,10 +26,10 @@ public class AplicacaoDeProva {
 
   public void cadastrarResposta(String resposta, int numeroQuestao)
   {
-    if (prova.recuperarQuestao(numeroQuestao) == null) {
-      System.out.println("Essa questão não existe");
+    if (this.prova.recuperarQuestao(numeroQuestao) == null) {
+      System.out.println("This question does not exists");
     } else {
-      respostas.add(new Resposta(resposta, numeroQuestao));
+      this.respostas.add(new Resposta(resposta, numeroQuestao));
     }
   }
 
@@ -39,7 +39,7 @@ public class AplicacaoDeProva {
 
     for (Resposta resposta : this.respostas) 
     {
-      Question questao = prova.recuperarQuestao(resposta.getNumeroQuestao());
+      Question questao = this.prova.recuperarQuestao(resposta.getNumeroQuestao());
 
       if (questao.checkAnswer(resposta.getResposta())) {
         if (questao instanceof ChoiceQuestion) {
@@ -62,7 +62,7 @@ public class AplicacaoDeProva {
       int questaoNumber = i + 1;
       Question questao = this.prova.recuperarQuestao(questaoNumber);
 
-      System.out.print("\nQuestão " + questaoNumber + ": ");
+      System.out.print("\nQuestion " + questaoNumber + ": ");
       questao.display();
 
       int cont = 0;
@@ -74,20 +74,20 @@ public class AplicacaoDeProva {
         cont++;
       }
       
-      System.out.print("Resposta: ");
+      System.out.print("Answer given: ");
 
       if (cont == this.respostas.size()) {
-        System.out.println("Questão não respondida");
+        System.out.println("Question not answered");
       } else {
         String resposta = this.respostas.get(cont).getResposta();
         System.out.println(resposta);
 
         if (!questao.checkAnswer(resposta)) {
-          System.out.println("Resposta certa: " + questao.getAnswer());
+          System.out.println("Correct answer: " + questao.getAnswer());
         }
       }
     }
     
-    System.out.println("\nNota final: " + this.calcularNota() + "\n");
+    System.out.println("\nFinal score: " + this.calcularNota());
   }
 }
