@@ -1,5 +1,8 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class App {
 
@@ -41,23 +44,65 @@ public class App {
             .forEach(f -> System.out.println(f));
 
         System.out.println("\n3. Nomes (em maiúsculas) dos funcionários do setor de vendas (usando reduce)\n");
-
-        lista
-            .stream()
-            .filter(f -> f.getDpto() == Departamento.VENDAS)
-            .reduce()
-            .forEach(f -> System.out.println(f));
+        
+        System.out.println(
+            lista
+                .stream()
+                .filter(f -> f.getDpto() == Departamento.VENDAS)
+                .map(f -> f.getNome().toUpperCase())
+                .reduce("", (n1, n2) -> {
+                    if (!"".equals(n1)) {
+                        return n1 + " - " + n2;
+                    } else {
+                        return n2;
+                    }
+                })
+        );
 
         System.out.println("\n4. Todos os gerentes:\n");
 
+        lista
+            .stream()
+            .filter(f -> f.getDpto() == Departamento.GERENCIA)
+            .forEach(f -> System.out.println(f));
+
         System.out.println("\n5. Idade média dos gerentes:\n");
+
+        lista
+            .stream()
+            .filter(f -> f.getDpto() == Departamento.GERENCIA)
+            .mapToInt(f -> f.getIdade())
+            .average()
+            .ifPresent(avg -> System.out.printf("%.2f\n", avg));
 
         System.out.println("\n6. Funcionarios ordenados pelo código:\n");
 
+        lista
+            .stream()
+            .sorted(Comparator.comparingInt(Pessoa::getCodigo))
+            .forEach(f -> System.out.println(f));
+
         System.out.println("\n7. Funcionários ordenados pela idade+nome:\n");
+
+        lista
+            .stream()
+            .sorted(Comparator.comparingInt(Pessoa::getIdade).thenComparing(Pessoa::getNome))
+            .forEach(f -> System.out.println(f));
 
         System.out.println("\n8. Criar uma nova lista apenas com os funcionarios do financeiro:\n");
 
+        System.out.println(
+            lista
+                .stream()
+                .filter(f -> f.getDpto() == Departamento.FINANCEIRO)
+                .collect(Collectors.toList())
+        );
+
         System.out.println("\n9. Nome e setor da pessoa mais jovem:\n");
+
+        lista
+            .stream()
+            .min(Comparator.comparingInt(Pessoa::getIdade))
+            .ifPresent(f -> System.out.println(f.getNome() + " " + f.getDpto()));
     }
 }
