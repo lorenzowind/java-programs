@@ -28,4 +28,8 @@ public class Rota {
 	public Aeronave getAeronave() {
 		return aeronave;
 	}
+	@Override
+    public String toString() {
+        return "Rota: " + this.origem.getNome() + " para " + this.destino.getNome();
+     }
 }

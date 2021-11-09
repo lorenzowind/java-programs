@@ -53,33 +53,39 @@ public class App {
 			new Geo(25.7933, -80.2906)
 		));
 
-		gerenciadorRotas.adicionar(new Rota(
+		Rota rota1 = new Rota(
 			gerenciadorCias.buscarPorCodigo("G3"),
 			gerenciadorAeroportos.buscarPorCodigo("GRU"),
 			gerenciadorAeroportos.buscarPorCodigo("POA"),
 			gerenciadorAeronaves.buscarPorCodigo("738")
-		));
+		);
 
-		gerenciadorRotas.adicionar(new Rota(
+		gerenciadorRotas.adicionar(rota1);
+        
+
+		Rota rota2 = new Rota(
 			gerenciadorCias.buscarPorCodigo("G3"),
 			gerenciadorAeroportos.buscarPorCodigo("POA"),
 			gerenciadorAeroportos.buscarPorCodigo("GRU"),
 			gerenciadorAeronaves.buscarPorCodigo("738")
-		));
+		);
+		gerenciadorRotas.adicionar(rota2);
 
-		gerenciadorRotas.adicionar(new Rota(
+		Rota rota3 = new Rota(
 			gerenciadorCias.buscarPorCodigo("TP"),
 			gerenciadorAeroportos.buscarPorCodigo("MIA"),
 			gerenciadorAeroportos.buscarPorCodigo("LIS"),
 			gerenciadorAeronaves.buscarPorCodigo("332")
-		));
+		);
+		gerenciadorRotas.adicionar(rota3);
 
-		gerenciadorRotas.adicionar(new Rota(
+		Rota rota4 = new Rota(
 			gerenciadorCias.buscarPorCodigo("JJ"),
 			gerenciadorAeroportos.buscarPorCodigo("GRU"),
 			gerenciadorAeroportos.buscarPorCodigo("POA"),
 			gerenciadorAeronaves.buscarPorCodigo("320")
-		));
+		);
+		gerenciadorRotas.adicionar(rota4);
 
 
 		Rota rotaselecionada = null;
@@ -158,5 +164,24 @@ public class App {
 				break;
 			}
 		}
+
+		VooEscalas vooEscalas = new VooEscalas(
+			rota1, 
+			rota2, 
+			LocalDateTime.of(2016, 8, 10, 8, 0), 
+	    	Duration.ofMinutes(90)
+		);
+		System.out.println(vooEscalas);
+        System.out.println();
+		VooVariasEscalas vooVariasEscalas = new VooVariasEscalas(
+			rota1, 
+			rota4, 
+			LocalDateTime.of(2016, 8, 10, 8, 0), 
+	    	Duration.ofMinutes(90)	
+		);
+		vooVariasEscalas.addRota(rota2);
+		vooVariasEscalas.addRota(rota3);
+		System.out.println(vooVariasEscalas);
+
 	}
 }
