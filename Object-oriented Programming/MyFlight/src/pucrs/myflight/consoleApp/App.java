@@ -1,6 +1,5 @@
 package pucrs.myflight.consoleApp;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -101,10 +100,9 @@ public class App {
 			}
 		} 
 
-		gerenciadorVoos.adicionar(new Voo(
+		gerenciadorVoos.adicionar(new VooDireto(
 			rotaselecionada,
-			LocalDateTime.of(2016, 8, 10, 8, 0), 
-			Duration.ofMinutes(90)
+			LocalDateTime.of(2016, 8, 10, 8, 0)
 		));
 
 		for (Voo voo : gerenciadorVoos.buscarPorData(
@@ -130,10 +128,9 @@ public class App {
 			}
 		} 
 
-		gerenciadorVoos.adicionar(new Voo(
+		gerenciadorVoos.adicionar(new VooDireto(
 			rotaselecionada,
-			LocalDateTime.of(2016, 8, 10, 15, 0), 
-			Duration.ofMinutes(120)
+			LocalDateTime.of(2016, 8, 10, 15, 0) 
 		));
 
 		for (Rota rota : gerenciadorRotas.buscarPorOrigem(
@@ -147,10 +144,9 @@ public class App {
 			}
 		} 
 
-		gerenciadorVoos.adicionar(new Voo(
+		gerenciadorVoos.adicionar(new VooDireto(
 			rotaselecionada,
-			LocalDateTime.of(2016, 8, 15, 12, 0), 
-			Duration.ofMinutes(120)
+			LocalDateTime.of(2016, 8, 15, 12, 0)
 		));
 
 		for (Voo voo : gerenciadorVoos.buscarPorData(
@@ -166,22 +162,13 @@ public class App {
 		}
 
 		VooEscalas vooEscalas = new VooEscalas(
-			rota1, 
-			rota2, 
-			LocalDateTime.of(2016, 8, 10, 8, 0), 
-	    	Duration.ofMinutes(90)
+			LocalDateTime.of(2016, 8, 10, 8, 0)
 		);
+		vooEscalas.adicionaRota(rota1);
+		vooEscalas.adicionaRota(rota2);
 		System.out.println(vooEscalas);
         System.out.println();
-		VooVariasEscalas vooVariasEscalas = new VooVariasEscalas(
-			rota1, 
-			rota4, 
-			LocalDateTime.of(2016, 8, 10, 8, 0), 
-	    	Duration.ofMinutes(90)	
-		);
-		vooVariasEscalas.addRota(rota2);
-		vooVariasEscalas.addRota(rota3);
-		System.out.println(vooVariasEscalas);
+		System.out.println(vooEscalas.getDuracao().toHours());
 
 	}
 }
